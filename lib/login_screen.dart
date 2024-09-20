@@ -4,9 +4,6 @@ import "package:chat_app/widgets/auth_text_field.dart";
 import "package:chat_app/widgets/password_text_field.dart";
 import "package:flutter/material.dart";
 import "package:provider/provider.dart";
-
-import "email_verification_screen.dart";
-import "first_screen.dart";
 import "forget_password.dart";
 
 class LoginScreen extends StatefulWidget {

@@ -96,7 +96,6 @@ class AuthServiceProvider extends ChangeNotifier {
         email: email,
         password: password,
       );
-      String? fcmToken= await FireBaseNotifications.getFCMToken();
       await fetchUserData();
       updateFcmToken();
     } catch (e) {
@@ -173,6 +172,7 @@ class AuthServiceProvider extends ChangeNotifier {
       await GoogleSignIn().signOut();
       // authentication flow
       final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
+      String? fcmToken = await FireBaseNotifications.getFCMToken();
       if (googleUser == null) {
         throw Exception("User not found");
       }
@@ -201,7 +201,7 @@ class AuthServiceProvider extends ChangeNotifier {
         'lastName': "",
         'email': googleUser.email,
         'avatar': googleUser.photoUrl,
-        'fcmToken': "",
+        'fcmToken':fcmToken ?? "",
         'lastOnline': DateTime.now().toIso8601String(),
       });
 
